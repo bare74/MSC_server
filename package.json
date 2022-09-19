@@ -13,6 +13,11 @@
     "body-parser": "^1.20.0",
     "cookie-parser": "^1.4.6",
     "express": "^4.18.1",
-    "express-session": "^1.17.3"
+    "express-session": "^1.17.3",
+    "nodemon": "^2.0.20",
+    "push-node": "^2.1.0",
+    "session-file-store": "^1.5.0",
+    "store": "^2.0.12",
+    "store2": "^2.14.2"
   }
 }

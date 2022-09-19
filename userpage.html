@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USERPAGE</title>
+</head>
+<h2>Velkommen til din bruker profil</h2>
+<hr>
+<p>Her kan du endre ditt passord:</p>
+
+<body>
+    <form action="/userpage" method="post">
+        <input type="password" placeholder="Gammelt passord" name="oldpassword">
+        <input type="password" placeholder="Nytt passord" name="newpassword">
+        <button type="submit">
+            Change Password
+        </button>
+    </form>
+</body>
+<br>
+<br>
+<br>
+<button type="button" onclick="logout()">LOGG UT</button>
+<script>
+    function logout() {
+        location.href = "./."
+    }
+</script>
+
+
+</html>

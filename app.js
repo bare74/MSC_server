@@ -29,14 +29,13 @@ app.use(express.static(__dirname));
 app.use(cookieParser());
 app.use(express.json());
 
-//username and password
-const myusername = "John";
-const mypassword = "London";
-
 let session = [];
 
 app.post("/user", (req, res) => {
-  if (req.body.username == myusername && req.body.password == mypassword) {
+  if (
+    req.body.username == myObject[0].username &&
+    req.body.password == myObject[0].password
+  ) {
     res.cookie("username", req.body.username);
     res.cookie("password", req.body.password);
     session = req.session;
@@ -56,7 +55,7 @@ app.get("/userpage", function (req, res) {
 });
 
 app.post("/userpage", function (req, res) {
-  if (mypassword == req.body.oldpassword) {
+  if (myObject[0].password == req.body.oldpassword) {
     req.body.oldpassword.replace(req.body.newpassword);
     res.cookie("new-password", req.body.newpassword);
     session = req.session;

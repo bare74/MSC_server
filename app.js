@@ -54,24 +54,22 @@ app.get("/userpage", function (req, res) {
   });
 });
 
+// edit password
 app.post("/userpage", function (req, res) {
   if (myObject[0].password == req.body.oldpassword) {
     req.body.oldpassword.replace(req.body.newpassword);
-    res.cookie("new-password", req.body.newpassword);
+    res.cookie("password", req.body.newpassword);
     session = req.session;
 
-    let newData = {
-      newpassword: `${req.body.newpassword}`,
-    };
-
-    myObject.push(newData);
-    var newData2 = JSON.stringify(myObject);
-    fs.writeFile("data2.json", newData2, (err) => {
-      // Error checking
-      if (err) throw err;
-      console.log("New data added");
+    const path = "./data.json";
+    const data = [{ id: 1, username: "John", password: req.body.newpassword }];
+    try {
+      fs.writeFileSync(path, JSON.stringify(data, null, 2));
+      console.log("data update sucsess");
       res.send("Gratulere passord er oppdatert!");
-    });
+    } catch (error) {
+      console.log("error writing data");
+    }
   } else {
     res.send("Feil passord");
   }
